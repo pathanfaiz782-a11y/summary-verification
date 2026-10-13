@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Submit your details and a summary for verification.">
+    <title>Take the Test | Summary Verification</title>
+    <link rel="stylesheet" href="assets\styles.css">
+</head>
+<body>
+    <main class="page-shell">
+        <nav class="topbar" aria-label="Main navigation">
+            <a class="brand" href="About.html"><span class="brand-mark">S</span> Summary Verification</a>
+            <a class="text-link" href="About.html">← About</a>
+        </nav>
+
+        <section class="form-layout">
+            <div class="form-intro">
+                <p class="eyebrow">YOUR TURN</p>
+                <h1>Share your<br><span>summary.</span></h1>
+                <p class="hero-copy">Enter your details and a short summary. We’ll check your name and email before displaying your submission.</p>
+                <div class="rule-note">
+                    <span class="rule-dot" aria-hidden="true"></span>
+                    <p><strong>Quick requirements</strong><br>Name starts with a capital letter and has fewer than 10 characters. Email ends in <code>@gmail.com</code>.</p>
+                </div>
+            </div>
+
+            <form class="form-card" action="Verify.jsp" method="post">
+                <div class="form-heading">
+                    <span class="step-label">SUMMARY CHECK · 01</span>
+                    <h2>Your details</h2>
+                </div>
+
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" maxlength="9" pattern="[A-Z].{0,8}" title="Start with a capital letter and enter fewer than 10 characters." placeholder="e.g. Jordan" required>
+
+                <label for="email">Email ID</label>
+                <input id="email" name="email" type="email" autocomplete="email" pattern=".+@gmail\.com" title="Use an email address ending in @gmail.com." placeholder="you@gmail.com" required>
+
+                <label for="summary">Summary</label>
+                <textarea id="summary" name="summary" rows="5" placeholder="Write a few sentences about your interests, skills, or goals..." required></textarea>
+
+                <button class="button button-primary button-full" type="submit">Verify and continue <span aria-hidden="true">→</span></button>
+                <p class="form-footnote">Your details are checked before they’re displayed.</p>
+            </form>
+        </section>
+
+        <footer class="site-footer">
+            <span>Summary Verification</span>
+            <span>Java · JSP · Apache Tomcat</span>
+        </footer>
+    </main>
+</body>
+</html>
