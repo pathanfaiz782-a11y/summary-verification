@@ -53,7 +53,7 @@
         </section>
         <footer class="site-footer">
             <span>Summary Verification</span>
-            <span>Java · JSP · Apache Tomcat</span>
+            <span>Java · JSP ·  Tomcat</span>
         </footer>
     </main>
 </body>
