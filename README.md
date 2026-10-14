@@ -1,6 +1,12 @@
 # Summary Verification
 
-A small JSP web application for Apache Tomcat. It introduces a Java developer, accepts a name, Gmail address, and summary, validates the submitted details on the server, and displays verified submissions.
+A small web application that introduces a Java developer, accepts a name, Gmail address, and summary, and displays the submission after checking the details.
+
+## Open directly in a browser
+
+No server is needed for the browser-only flow. Open `src\main\webapp\About.html` in a browser, choose **Take the test**, and submit the form. The browser validates the form and redirects to the result page. Submission data is kept in the current tab's session storage and cleared after display.
+
+This mode performs validation in the browser only; it does not send or store submissions on a server.
 
 ## Requirements
 
@@ -8,7 +14,7 @@ A small JSP web application for Apache Tomcat. It introduces a Java developer, a
 - Maven 3.6 or newer
 - Apache Tomcat 9
 
-## Build and run
+## Optional: deploy the JSP application
 
 From the project directory, create the deployable WAR:
 
@@ -30,4 +36,4 @@ The app is packaged as a WAR and uses the `javax.servlet` JSP stack provided by 
 - The email address must end with `@gmail.com`.
 - A summary is required.
 
-The server checks the submitted values regardless of browser-side form validation. Verified content is HTML-escaped when displayed.
+The JSP submission flow requires Tomcat. The server checks submitted values regardless of browser-side form validation. Verified content is HTML-escaped when displayed.

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Verified Summary | Summary Verification</title>
+    <link rel="stylesheet" href="assets\styles.css">
+</head>
+<body>
+    <main class="page-shell">
+        <nav class="topbar" aria-label="Main navigation">
+            <a class="brand" href="About.html"><span class="brand-mark">S</span> Summary Verification</a>
+            <span class="verified-badge"><span aria-hidden="true">✓</span> Verified</span>
+        </nav>
+
+        <section class="result-layout">
+            <div class="result-heading">
+                <p class="eyebrow">SUBMISSION COMPLETE</p>
+                <h1>Thanks, <span id="verified-name"></span>.</h1>
+                <p class="hero-copy">Your details passed verification. Here’s the summary you submitted.</p>
+            </div>
+
+            <article class="result-card">
+                <div class="result-meta">
+                    <div>
+                        <span class="field-caption">NAME</span>
+                        <p id="verified-name-card"></p>
+                    </div>
+                    <div>
+                        <span class="field-caption">EMAIL ID</span>
+                        <p id="verified-email"></p>
+                    </div>
+                </div>
+                <div class="summary-block">
+                    <span class="field-caption">YOUR SUMMARY</span>
+                    <p class="submitted-summary" id="verified-summary"></p>
+                </div>
+            </article>
+
+            <a class="text-link result-link" href="About.html">← Back to about</a>
+        </section>
+        <footer class="site-footer">
+            <span>Summary Verification</span>
+            <span>HTML · CSS · JavaScript</span>
+        </footer>
+    </main>
+    <script>
+        let submission;
+        try {
+            submission = sessionStorage.getItem("verifiedSubmission");
+            sessionStorage.removeItem("verifiedSubmission");
+        } catch (error) {
+            window.location.replace("Test.html");
+        }
+
+        if (!submission) {
+            window.location.replace("Test.html");
+        } else {
+            try {
+                const details = JSON.parse(submission);
+                if (!details.name || !details.email || !details.summary) {
+                    throw new Error("Submission details are incomplete.");
+                }
+
+                document.getElementById("verified-name").textContent = details.name;
+                document.getElementById("verified-name-card").textContent = details.name;
+                document.getElementById("verified-email").textContent = details.email;
+                document.getElementById("verified-summary").textContent = details.summary;
+            } catch (error) {
+                window.location.replace("Test.html");
+            }
+        }
+    </script>
+</body>
+</html>

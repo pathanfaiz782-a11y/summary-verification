@@ -25,7 +25,7 @@
                 </div>
             </div>
 
-            <form class="form-card" action="Verify.jsp" method="post">
+            <form class="form-card" action="Display.html" method="get">
                 <div class="form-heading">
                     <span class="step-label">SUMMARY CHECK · 01</span>
                     <h2>Your details</h2>
@@ -42,13 +42,45 @@
 
                 <button class="button button-primary button-full" type="submit">Verify and continue <span aria-hidden="true">→</span></button>
                 <p class="form-footnote">Your details are checked before they’re displayed.</p>
+                <p class="form-footnote" id="submission-error" role="alert" hidden></p>
             </form>
         </section>
 
         <footer class="site-footer">
             <span>Summary Verification</span>
-            <span>Java · JSP · Apache Tomcat</span>
+            <span>HTML · CSS · JavaScript</span>
         </footer>
     </main>
+    <script>
+        const form = document.querySelector(".form-card");
+        const summaryField = document.getElementById("summary");
+        const errorMessage = document.getElementById("submission-error");
+
+        function validateSummary() {
+            summaryField.setCustomValidity(
+                summaryField.value.trim() ? "" : "Please enter a summary with at least one non-space character."
+            );
+        }
+
+        summaryField.addEventListener("input", validateSummary);
+        validateSummary();
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            errorMessage.hidden = true;
+
+            try {
+                sessionStorage.setItem("verifiedSubmission", JSON.stringify({
+                    name: document.getElementById("name").value,
+                    email: document.getElementById("email").value,
+                    summary: summaryField.value
+                }));
+                window.location.assign("Display.html");
+            } catch (error) {
+                errorMessage.textContent = "This browser could not save your submission for the next page. Check your browser's storage settings and try again.";
+                errorMessage.hidden = false;
+            }
+        });
+    </script>
 </body>
 </html>

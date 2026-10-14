@@ -13,10 +13,10 @@
     boolean validEmail = email != null && email.endsWith("@gmail.com");
 
     if (validName && validEmail && summary != null && !summary.trim().isEmpty()) {
-        request.setAttribute("verifiedName", name);
-        request.setAttribute("verifiedEmail", email);
-        request.setAttribute("verifiedSummary", summary);
-        request.getRequestDispatcher("/Display.jsp").forward(request, response);
+        session.setAttribute("verifiedName", name);
+        session.setAttribute("verifiedEmail", email);
+        session.setAttribute("verifiedSummary", summary);
+        response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/Display.jsp"));
         return;
     }
 
